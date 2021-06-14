@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const person = {
+            name: 'Vladilen',
+        }
+        function info(phone, email){
+            console.log(`Имя: ${this.name},тел.:${phone}, Email: ${email}`)
+        }
+       function bind(fn, context, ...rest){
+        return function(...args){
+         return fn.apply(context, rest.concat(args))
+        }
+       }
+       bind(info, person)('123', '@gmail')
+       bind(info, person, '123')('@gmail')
+       bind(info, person, '123', '@gmail')()
+    </script>
+</body>
+</html>
